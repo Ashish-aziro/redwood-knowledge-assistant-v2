@@ -1,0 +1,116 @@
+/* =====================================================================
+   Aziro design system — drop-in stylesheet
+   Source of truth: https://www.aziro.com/ (measured 2026-11-10)
+   Load Inter first:
+   <link rel="preconnect" href="https://fonts.googleapis.com" />
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+   ===================================================================== */
+
+:root {
+  /* brand */
+  --az-navy: #0a2540;        /* primary text, structure, dark surfaces */
+  --az-navy-2: #13315c;      /* gradient partner for navy */
+  --az-orange: #fe6900;      /* primary CTA, accents, "active" */
+  --az-orange-dark: #e25d00; /* CTA hover, orange text on light bg */
+  --az-orange-soft: #fff1e6; /* orange tint backgrounds (badges, hovers) */
+  --az-blue: #2b50a1;        /* links, secondary accent, logo blue */
+  --az-blue-soft: #eaf0fa;   /* blue tint backgrounds */
+
+  /* neutrals */
+  --az-bg: #f5f7fa;
+  --az-card: #ffffff;
+  --az-text: #0a2540;
+  --az-muted: #5b6b7f;
+  --az-line: #e3e8ef;
+  --az-success: #057642;
+  --az-danger: #cc1016;
+
+  /* shape + depth */
+  --az-radius: 10px;
+  --az-radius-lg: 16px;
+  --az-pill: 999px;
+  --az-shadow: 0 0 0 1px rgba(10,37,64,.07), 0 4px 14px rgba(10,37,64,.06);
+  --az-cta-shadow: 0 6px 16px rgba(254,105,0,.25);
+
+  --az-font: Inter, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* base */
+body { margin: 0; font-family: var(--az-font); background: var(--az-bg); color: var(--az-text);
+  -webkit-font-smoothing: antialiased; }
+a { color: var(--az-blue); }
+
+/* header: white bar, colour logo, thin divider, product name */
+.az-topbar { position: sticky; top: 0; z-index: 10; background: #fff; box-shadow: 0 1px 0 var(--az-line); }
+.az-topbar-inner { max-width: 1040px; margin: 0 auto; height: 64px; padding: 0 20px;
+  display: flex; align-items: center; justify-content: space-between; }
+.az-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--az-navy); }
+.az-brand img { width: 40px; height: 40px; object-fit: contain; display: block; }
+.az-brand-divider { width: 1px; height: 26px; background: var(--az-line); }
+.az-brand-name { font-weight: 700; font-size: 17px; letter-spacing: -.2px; }
+
+/* hero: navy gradient band + orange eyebrow dash + orange highlight word */
+.az-hero { color: #fff; border-radius: var(--az-radius-lg); padding: 44px 40px;
+  background: radial-gradient(1200px 400px at 85% -10%, rgba(43,80,161,.55), transparent 60%),
+              linear-gradient(135deg, var(--az-navy) 0%, var(--az-navy-2) 100%); }
+.az-hero h1 { margin: 0 0 12px; font-size: clamp(28px, 4vw, 40px); line-height: 1.15; font-weight: 800; letter-spacing: -.8px; }
+.az-hero .az-accent { color: var(--az-orange); }
+.az-hero p { margin: 0; max-width: 680px; font-size: 18px; color: rgba(255,255,255,.82); }
+.az-eyebrow { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 14px; font-size: 13px;
+  font-weight: 600; text-transform: uppercase; letter-spacing: 1.2px; color: rgba(255,255,255,.9); }
+.az-eyebrow::before { content: ""; width: 28px; height: 2px; border-radius: 2px; background: var(--az-orange); }
+
+/* cards */
+.az-card { background: var(--az-card); border-radius: var(--az-radius); box-shadow: var(--az-shadow); padding: 24px; }
+.az-badge { display: inline-block; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .4px;
+  color: var(--az-orange-dark); background: var(--az-orange-soft); padding: 3px 10px; border-radius: var(--az-pill); }
+
+/* buttons: orange pill = primary, navy outline pill = secondary */
+.az-btn { display: inline-flex; align-items: center; gap: 8px; border: 0; border-radius: var(--az-pill);
+  padding: 10px 22px; font: 600 15px var(--az-font); cursor: pointer; text-decoration: none;
+  transition: background .15s, box-shadow .15s, transform .05s; }
+.az-btn:active { transform: translateY(1px); }
+.az-btn-primary { background: var(--az-orange); color: #fff; box-shadow: var(--az-cta-shadow); }
+.az-btn-primary:hover { background: var(--az-orange-dark); }
+.az-btn-primary:disabled { background: #f6c9a6; box-shadow: none; cursor: not-allowed; }
+.az-btn-secondary { background: #fff; color: var(--az-navy); box-shadow: inset 0 0 0 1.5px var(--az-navy); }
+.az-btn-secondary:hover { background: var(--az-blue-soft); box-shadow: inset 0 0 0 2px var(--az-navy); }
+
+/* inputs */
+.az-input { width: 100%; box-sizing: border-box; border: 1px solid #8c99a8; border-radius: 8px; padding: 10px 12px;
+  font: 15px var(--az-font); color: var(--az-text); background: #fff; }
+.az-input:focus { outline: none; border-color: var(--az-blue); box-shadow: 0 0 0 3px rgba(43,80,161,.15); }
+
+/* chips / tags */
+.az-chip { border: 1px solid #8c99a8; background: #fff; color: #33475b; border-radius: var(--az-pill);
+  padding: 6px 14px; font: 600 14px var(--az-font); cursor: pointer; }
+.az-chip:hover { border-color: var(--az-orange); color: var(--az-orange-dark); background: var(--az-orange-soft); }
+
+/* numbered step marker (navy disc) and "active" ring (orange) */
+.az-step-num { width: 34px; height: 34px; border-radius: 50%; background: var(--az-navy); color: #fff;
+  font-weight: 800; display: grid; place-items: center; }
+.az-active { box-shadow: 0 0 0 2px var(--az-orange); }
+
+/* callout / hint: orange left rule */
+.az-hint { font-size: 14px; color: var(--az-muted); background: #f7f9fc; border-left: 3px solid var(--az-orange);
+  padding: 8px 12px; border-radius: 4px; }
+
+/* progress: navy → blue → orange */
+.az-progress { height: 8px; background: #e7ecf1; border-radius: var(--az-pill); overflow: hidden; }
+.az-progress > span { display: block; height: 100%; border-radius: var(--az-pill);
+  background: linear-gradient(90deg, var(--az-navy), var(--az-blue) 60%, var(--az-orange)); }
+
+/* footer: small logo + "Built by Aziro" */
+.az-footer { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 8px 20px 36px;
+  color: var(--az-muted); font-size: 13px; }
+.az-footer img { width: 28px; height: 28px; object-fit: contain; }
+.az-footer a { color: var(--az-navy); font-weight: 600; text-decoration: none; }
+.az-footer a:hover { color: var(--az-orange-dark); }
+
+@media (max-width: 720px) {
+  .az-hero { padding: 28px 20px; }
+  .az-brand-name { font-size: 14px; }
+  .az-brand-divider { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
